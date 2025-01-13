@@ -1,23 +1,31 @@
 import "./Sidebar.css";
 
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+
+import api from "../../api";
+import { formatDecimals } from "../../utils/formatDecimals";
 
 const Sidebar = () => {
-  const [wallet, setWallet] = useState<string>("");
-  const [balance, setBalance] = useState<number | null>(null); 
+  const WALLET_DEFAULT = "bcrt1qxa9uhfyw885z7ce7z3hxj9fn62cq45e73fkj7q";
+  const [wallet, setWallet] = useState<string>(WALLET_DEFAULT);
+  const [balance, setBalance] = useState<number|null>(null);
 
   useEffect(() => {
-    const checkBalance = () => {
-      if (wallet === "0x1") {
-        setBalance(3200);
-      } else if (wallet !== "") {
-        setBalance(2500);
+    const fetchBalance = async () => {
+      if (wallet) {
+        try {
+          const response = await api.get(`/balance/${wallet}`);
+          setBalance(response.data.balance);
+        } catch (error) {
+          console.error("Erro ao buscar saldo:", error);
+          setBalance(null);
+        }
       } else {
         setBalance(null);
       }
     };
 
-    checkBalance();
+    fetchBalance();
   }, [wallet]);
 
   const handleWalletValue = useCallback(
@@ -27,17 +35,6 @@ const Sidebar = () => {
     []
   );
 
-  const formatCurrency = (value: number | null) => {
-    if (value === null) {
-      return "...";
-    }
-
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(value);
-  };
-
   return (
     <div className="sidebar">
       <div className="tools">
@@ -45,12 +42,18 @@ const Sidebar = () => {
           <li>
             <h2>Confira seu Saldo</h2>
             <div className="info-actions">
-              <input type="text" value={wallet} onChange={handleWalletValue} />
+              <input
+                type="text"
+                value={wallet}
+                onChange={handleWalletValue}
+                placeholder="Insira o endereço da carteira"
+              />
             </div>
 
             <div className="info-content">
-              <span className="icon">💰</span> Saldo:{" "}
-              <h2 className="balance">{formatCurrency(balance)}</h2>
+              <span className="icon">💰</span> Saldo(
+              <span className="sub">BTC</span>):
+              <h3 className="balance">{formatDecimals(balance,4)}</h3>
             </div>
           </li>
         </ul>
