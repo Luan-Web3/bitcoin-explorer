@@ -1,0 +1,35 @@
+.topnavbar {
+  display: flex;
+  padding: 0.75rem 2.5rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px var(--secondary-color);
+  
+}
+
+.topnavbar .actions {
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  display: flex;
+}
+
+.topnavbar .actions input {
+  min-width: 100%;
+  width:414px;
+  margin-bottom: 10px;
+
+}
+
+@media (max-width: 910px) {
+  .topnavbar {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .topnavbar .actions {
+    padding: 0;
+  }
+  .topnavbar .actions input {
+    width: 320px;
+  }
+}
