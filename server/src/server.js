@@ -103,6 +103,18 @@ app.get('/blocks/latest', async (req, res) => {
     }
 });
 
+// Endpoint: Buscar as últimas 10 transações
+app.get('/transactions/latest', async (req, res) => {
+    try {
+        const transactions = await client.listTransactions('*', 10, 0);
+
+        res.json(transactions);
+    } catch (error) {
+        console.error('Erro ao buscar transações:', error.message);
+        res.status(500).json({ error: 'Erro ao buscar transações' });
+    }
+});
+
 // Inicializar o servidor
 const PORT = 3000;
 app.listen(PORT, () => {
