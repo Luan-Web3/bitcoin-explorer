@@ -1,5 +1,5 @@
 # Dojo Bitcoin 
-### Grupo - Cruzada dos Dados ⚔️🎲
+### Grupo - Cruzados do Código ⚔️🎲👩‍💻
 
 Um estudo de 5 semanas sobre desenvolvimento na rede Bitcoin e Lightning Network ! 😲 🚀
 
