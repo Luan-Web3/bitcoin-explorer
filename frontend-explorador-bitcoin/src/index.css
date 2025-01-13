@@ -12,7 +12,8 @@ body {
 
   background-color: var(--primary-color);
   color: #fff;
-  font-family: "Space Grotesk", "Noto Sans", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: 0.5px;;
   height: 100%;
   overflow-y: hidden;
 }
@@ -59,4 +60,20 @@ input:focus {
 
 ::-webkit-scrollbar-thumb {
   background: var(--secondary-color);
+}
+
+h1,h2,h3{
+     font-family: "EB Garamond", serif;
+
+}
+
+h1{
+   font-size:38px;
+}
+
+h2{
+   font-size:32px;
+}
+h3{
+  font-size:26px;
 }
