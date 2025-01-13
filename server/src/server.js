@@ -1,10 +1,19 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const Client = require('bitcoin-core');
 
 const app = express();
 app.use(bodyParser.json());
+
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+};
+
+app.use(cors(corsOptions));
 
 const client = new Client({
     network: 'regtest',
