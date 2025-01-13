@@ -33,6 +33,7 @@ Em um novo terminal, navegue até a pasta do frontend e instale as dependências
 cd frontend-explorador-bitcoin
 npm install
 ```
+
 #### Passo 3
 Inicie a aplicação React:
 
@@ -40,6 +41,31 @@ Inicie a aplicação React:
 npm run dev
 ```
 
-A aplicação estará disponível em **`http://localhost:5173`**.
+A aplicação estará disponível em **`http://localhost:5173`**. 🎉✨🥳
 
 
+## Instruções para rodar com Docker 
+
+Em um novo terminal, navegue até a pasta do frontend e instale as dependências:
+
+#### Passo 1
+```
+cd frontend-explorador-bitcoin
+npm install
+```
+
+#### Passo 2
+Crie uma imagem com o seguinte comando:
+
+```
+docker build -t dojo-bitcoin-app .
+```
+
+#### Passo 3
+Inicie o contêiner:
+
+```
+docker run -d -p 8080:80 --name dojo-bitcoin-container dojo-bitcoin-app
+```
+
+A aplicação estará disponível em **`http://localhost:8080`**. 🎉✨🥳
