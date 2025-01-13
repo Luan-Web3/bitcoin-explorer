@@ -1,10 +1,19 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const Client = require('bitcoin-core');
 
 const app = express();
 app.use(bodyParser.json());
+
+const corsOptions = {
+    origin: process.env.CORS_ORIGIN,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+};
+
+app.use(cors(corsOptions));
 
 const client = new Client({
     network: 'regtest',
@@ -67,6 +76,30 @@ app.get('/balance/:address', async (req, res) => {
         res.json({ address, balance });
     } catch (err) {
         res.status(500).json({ error: err.message });
+    }
+});
+
+// Endpoint: Buscar os últimos 5 blocos
+app.get('/blocks/latest', async (req, res) => {
+    try {
+        const blockCount = await client.getBlockCount();
+
+        const lastBlocksCount = blockCount >= 5 ? 5 : blockCount;
+
+        const blockPromises = [];
+        for (let i = blockCount; i > blockCount - lastBlocksCount; i--) {
+            blockPromises.push(client.getBlockHash(i));
+        }
+
+        const blockHashes = await Promise.all(blockPromises);
+
+        const blockDetailsPromises = blockHashes.map(hash => client.getBlock(hash));
+        const blocks = await Promise.all(blockDetailsPromises);
+
+        res.json(blocks);
+    } catch (error) {
+        console.error('Erro ao buscar os últimos blocos:', error.message);
+        res.status(500).json({ error: 'Erro ao buscar os últimos blocos' });
     }
 });
 
