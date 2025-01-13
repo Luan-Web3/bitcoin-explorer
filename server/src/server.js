@@ -70,6 +70,30 @@ app.get('/balance/:address', async (req, res) => {
     }
 });
 
+// Endpoint: Buscar os últimos 5 blocos
+app.get('/blocks/latest', async (req, res) => {
+    try {
+        const blockCount = await client.getBlockCount();
+
+        const lastBlocksCount = blockCount >= 5 ? 5 : blockCount;
+
+        const blockPromises = [];
+        for (let i = blockCount; i > blockCount - lastBlocksCount; i--) {
+            blockPromises.push(client.getBlockHash(i));
+        }
+
+        const blockHashes = await Promise.all(blockPromises);
+
+        const blockDetailsPromises = blockHashes.map(hash => client.getBlock(hash));
+        const blocks = await Promise.all(blockDetailsPromises);
+
+        res.json(blocks);
+    } catch (error) {
+        console.error('Erro ao buscar os últimos blocos:', error.message);
+        res.status(500).json({ error: 'Erro ao buscar os últimos blocos' });
+    }
+});
+
 // Inicializar o servidor
 const PORT = 3000;
 app.listen(PORT, () => {
