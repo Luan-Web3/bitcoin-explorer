@@ -1,6 +1,8 @@
-# Dojo Bitcoin
+# Dojo Bitcoin 
+### Grupo - Cruzada dos Dados ⚔️🎲
 
-Um estudo de 5 semanas sobre o desenvolvimento no Bitcoin e Lightning Network! 😲 🚀
+Um estudo de 5 semanas sobre desenvolvimento na rede Bitcoin e Lightning Network ! 😲 🚀
+
 
 <details><summary> <h2>✅ Semana 1 </h2></summary>
 
@@ -27,3 +29,7 @@ Um estudo de 5 semanas sobre o desenvolvimento no Bitcoin e Lightning Network! �
 ## Semana 3
 ## Semana 4
 ## Semana 5
+
+---
+
+> Dojo oferecido pela [NearX](https://nearx.com.br/pt/home)
