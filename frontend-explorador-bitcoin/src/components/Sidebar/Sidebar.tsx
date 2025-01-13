@@ -40,6 +40,8 @@ const Sidebar = () => {
       <div className="tools">
         <ul>
           <li>
+            <h1>BitScan</h1>
+
             <h2>Confira seu Saldo</h2>
             <div className="info-actions">
               <input
@@ -53,7 +55,7 @@ const Sidebar = () => {
             <div className="info-content">
               <span className="icon">💰</span> Saldo(
               <span className="sub">BTC</span>):
-              <h3 className="balance">{formatDecimals(balance,4)}</h3>
+              <h3 className="balance">{formatDecimals(balance, 4)}</h3>
             </div>
           </li>
         </ul>

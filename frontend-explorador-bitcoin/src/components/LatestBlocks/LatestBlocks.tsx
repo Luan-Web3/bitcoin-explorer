@@ -36,8 +36,21 @@ const LatestBlocks = () => {
   const [copiedHash, setCopiedHash] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchBlocks(NUMBER_ONE);
+    fetchLatestBlocks();
   }, []);
+
+  const fetchLatestBlocks = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get(`/blocks/latest`);
+      setBlocks(response.data);
+      console.log(blocks)
+    } catch (error) {
+      console.error("Erro ao buscar blocos:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const fetchBlocks = async (blockNumber: number) => {
     try {
