@@ -1,35 +1,58 @@
 # Dojo Bitcoin 
 ### Grupo - Cruzados do Código ⚔️🎲👩‍💻
 
-Um estudo de 5 semanas sobre desenvolvimento na rede Bitcoin e Lightning Network ! 😲 🚀
+> Projeto em andamento 
 
 
-<details><summary> <h2>✅ Semana 1 </h2></summary>
+**Primeiro projeto** do estudo de 5 semanas da [NearX](https://nearx.com.br/pt/home) sobre desenvolvimento na rede Bitcoin e Lightning Network ! 😲 🚀
 
-**✍️ Aula**
+# 🤺 Sobre o projeto
 
-- Subir nó Bitcoin (testnet) local.
-- Interagir com o nó Bitcoin usando RPC e CLI.
-- Estrutura de blocos e transações no Bitcoin.
-
-**🤺 Desafio**
-
-- [ ] Subir nó Bitcoin (testnet) em um serviço de cloud (ex.: AWS, DigitalOcean).
-- [ ] Criar um Explorer que conecte ao nó Bitcoin, com as seguintes funcionalidades:
-  - [ ] Buscar um bloco pelo número.
-  - [ ] Buscar uma transação pelo hash.
-  - [ ] Exibir o saldo de uma carteira com base no endereço.
-- [ ] Documentar e compartilhar a trajetória no LinkedIn ou Twitter.
- 
-</details>  
+É um Explorer que conecta-se ao nó Bitcoin é tem as seguintes funcionalidades: 
+  -  Busca um bloco pelo número.
+  -  Buscar uma transação pelo hash.
+  -  Exibir o saldo de uma carteira com base no endereço.
 
 
+![](https://github.com/dev-araujo/dojo-bitcoin/blob/main/frontend-explorador-bitcoin/src/assets/block.png?raw=true)
 
-## Semana 2
-## Semana 3
-## Semana 4
-## Semana 5
 
----
+## Instruções para executar localmente
 
-> Dojo oferecido pela [NearX](https://nearx.com.br/pt/home)
+- [Frontend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/frontend-explorador-bitcoin/README.md) (Em construção)
+- [Backend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/server/README.md) (Em construção)
+
+
+## 🤝 Colaboradores
+
+Agradecemos às seguintes pessoas que contribuíram para este projeto:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/LuanHSL" title="Luan Henrique">
+        <img src="https://avatars.githubusercontent.com/u/61790737?v=4" width="100px;" alt="Foto do Luan Henrique
+ no GitHub"/><br>
+        <sub>
+          <b>Luan Henrique</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/profmarciojmorais" title="Marcio Morais">
+        <img src="https://avatars.githubusercontent.com/u/136830648?v=4" width="100px;" alt="Foto do Marcio Morais"/><br>
+        <sub>
+          <b>Marcio Morais</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/dev-araujo" title="Adriano P. Araujo">
+        <img src="https://avatars.githubusercontent.com/u/97068163?v=4" width="100px;" alt="Foto do Adriano P. Araujo"/><br>
+        <sub>
+          <b>Adriano P. Araujo</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
