@@ -30,8 +30,8 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/LuanHSL" title="Luan Henrique">
-        <img src="https://avatars.githubusercontent.com/u/61790737?v=4" width="100px;" alt="Foto do Luan Henrique
+      <a href="https://github.com/Luan-Web3" title="Luan Henrique">
+        <img src="https://avatars.githubusercontent.com/u/190740246?v=4" width="100px;" alt="Foto do Luan Henrique
  no GitHub"/><br>
         <sub>
           <b>Luan Henrique</b>
