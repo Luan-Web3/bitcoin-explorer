@@ -2,26 +2,17 @@ import "./TransactionsTable.css";
 
 import React, { useEffect, useState } from "react";
 
-import api from "../../api";
+import api from "../../api/api";
 import { formatDecimals } from "../../utils/formatDecimals";
 import { formatTimestamp } from "../../utils/formatTimestamp";
+import paths from "../../api/paths";
 
 interface Transaction {
   txid: string;
   blocktime: number;
-  vout: {
-    value: number;
-    n: number;
-    scriptPubKey: {
-      asm: string;
-      desc: string;
-      hex: string;
-      address?: string;
-      type: string;
-    };
-  }[];
-  confirmations: number;
-  time: number;
+  value: number;
+  size: number;
+  weight: number;
 }
 
 const TransactionsTable = () => {
@@ -36,7 +27,7 @@ const TransactionsTable = () => {
   const fetchLatestTransactions = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/transactions/latest`);
+      const response = await api.get(paths["transactions"]);
       setTransactions(response.data);
     } catch (error) {
       console.error("Erro ao buscar transações:", error);
@@ -49,7 +40,7 @@ const TransactionsTable = () => {
   const fetchTransactionByTxid = async (txid: string) => {
     try {
       setLoading(true);
-      const response = await api.get(`/transaction/${txid}`);
+      const response = await api.get(`${paths["transactions"]}/${txid}`);
       setTransactions([response.data]);
     } catch (error) {
       console.error("Erro ao buscar transação:", error);
@@ -84,7 +75,7 @@ const TransactionsTable = () => {
         <form onSubmit={handleSearch}>
           <input
             disabled={loading}
-            placeholder="Pesquise a transação pelo txid aqui"
+            placeholder="Pesquise a transação pelo txid aqui e clique Enter"
             value={search}
             onChange={handleSearchChange}
           />
@@ -99,34 +90,25 @@ const TransactionsTable = () => {
           <table>
             <thead>
               <tr>
-                <th>txid</th>
+                <th>ID</th>
                 <th className="optional">Data/Hora (Bloco)</th>
                 <th>Valor (BTC)</th>
-                <th className="optional">Tipo</th>
-                <th>Confirmações</th>
+                <th className="optional">Tamanho</th>
+                <th>Peso</th>
               </tr>
             </thead>
             <tbody>
-              {/* {transactions.map((transaction) => (
+              {transactions.map((transaction) => (
                 <tr key={transaction.txid}>
                   <td>{transaction.txid}</td>
                   <td className="optional">
-                    {formatTimestamp(transaction.blocktime)}
+                    {formatTimestamp(transaction?.blocktime)}
                   </td>
-                  <td>
-                    {formatDecimals(
-                      transaction?.vout.reduce(
-                        (total, output) => total + output.value,
-                        0
-                      )
-                    )}
-                  </td>
-                  <td className="optional">
-                    {transaction.vout[0]?.scriptPubKey.type}
-                  </td>
-                  <td>{transaction.confirmations}</td>
+                  <td>{formatDecimals(transaction?.value)}</td>
+                  <td className="optional">{transaction?.size}</td>
+                  <td>{transaction?.weight}</td>
                 </tr>
-              ))} */}
+              ))}
             </tbody>
           </table>
         ) : (

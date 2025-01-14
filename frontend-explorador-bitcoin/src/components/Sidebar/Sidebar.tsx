@@ -2,7 +2,7 @@ import "./Sidebar.css";
 
 import React, { useCallback, useEffect, useState } from "react";
 
-import api from "../../api";
+import api from "../../api/api";
 import { formatDecimals } from "../../utils/formatDecimals";
 
 const Sidebar = () => {
@@ -40,7 +40,7 @@ const Sidebar = () => {
       <div className="tools">
         <ul>
           <li>
-            <h1>BitScan</h1>
+            <h1 className="title">BitScan</h1>
 
             <h2>Confira seu Saldo</h2>
             <div className="info-actions">

@@ -11,6 +11,10 @@
   }
 }
 
+.sidebar .title {
+  border-bottom: 1px solid var(--secondary-color);
+}
+
 .sidebar ul {
   list-style: none;
   padding: 0;

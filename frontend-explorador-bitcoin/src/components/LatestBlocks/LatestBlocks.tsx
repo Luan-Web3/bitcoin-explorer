@@ -2,31 +2,18 @@ import "./LatestBlocks.css";
 
 import React, { useEffect, useState } from "react";
 
-import api from "../../api";
+import api from "../../api/api";
 import { copyToClipboard } from "../../utils/copyToClipboard";
 import { formatTimestamp } from "../../utils/formatTimestamp";
+import paths from '../../api/paths'
 
 interface Block {
-  hash: string;
-  confirmations: number;
-  height: number;
-  version: number;
-  versionHex: string;
-  merkleroot: string;
-  time: number;
-  mediantime: number;
-  nonce: number;
-  bits: string;
-  difficulty: string;
-  chainwork: string;
-  nTx: number;
-  previousblockhash: string;
-  nextblockhash: string | null;
-  strippedsize: number;
-  size: number;
-  weight: number;
-  tx: string[];
-}
+    hash: string;
+    height: number;
+    confirmations: number;
+    time: number;
+};
+
 
 const LatestBlocks = () => {
   const [blocks, setBlocks] = useState<Block[]>([]);
@@ -41,7 +28,7 @@ const LatestBlocks = () => {
   const fetchLatestBlocks = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/blocks/latest`);
+      const response = await api.get(paths["blocks"]);
       setBlocks(response.data);
     } catch (error) {
       console.error("Erro ao buscar blocos:", error);
@@ -54,7 +41,7 @@ const LatestBlocks = () => {
   const fetchBlockByNumber = async (blockNumber: number) => {
     try {
       setLoading(true);
-      const response = await api.get(`/block/${blockNumber}`);
+      const response = await api.get(`${paths["blocks"]}/${blockNumber}`);
       setBlocks([response.data]);
     } catch (error) {
       console.error("Erro ao buscar bloco:", error);
