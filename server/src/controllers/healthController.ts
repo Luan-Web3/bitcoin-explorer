@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+
 import bitcoinClient from '../services/bitcoinService';
 
 export const checkHealth = async (req: Request, res: Response) => {
@@ -12,7 +13,7 @@ export const checkHealth = async (req: Request, res: Response) => {
             headers: info.headers,
             verificationprogress: info.verificationprogress,
         });
-    } catch (error) {
+    } catch (error:any) {
         res.status(500).json({
             status: 'ERROR',
             message: 'Não foi possível conectar ao nó Bitcoin.',
