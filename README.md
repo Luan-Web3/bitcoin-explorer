@@ -14,12 +14,12 @@ Esse projeto é um **Explorador de Blocos** que conecta-se ao nó Bitcoin é tem
   -  Exibir o saldo de uma carteira com base no endereço.
 
 
-![Logo do explorador Bitcoin](./frontend-explorador-bitcoin/src/assets/btc-explorer.png)
+![Logo do explorador Bitcoin](./frontend/src/assets/btc-explorer.png)
 
 
 ## Instruções para executar localmente
 
-- [Frontend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/frontend-explorador-bitcoin/README.md)
+- [Frontend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/frontend/README.md)
 - [Backend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/server/README.md) 
 
 
