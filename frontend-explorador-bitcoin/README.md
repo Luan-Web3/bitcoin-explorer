@@ -4,7 +4,7 @@
 > Interface inicial 
 
 
-![alt text](src/assets/block.png)
+![alt text](../frontend-explorador-bitcoin/src/assets/btc-explorer.png)
 
 
 
@@ -17,7 +17,7 @@
 
 ### Pré-requisitos:
 
-É necessário ter **Node.js** instalados para rodar o projeto localmente.
+É necessário ter **Node.js** instalados para rodar o projeto localmente. 
 
 #### Passo 1
 No terminal, clone o projeto:
