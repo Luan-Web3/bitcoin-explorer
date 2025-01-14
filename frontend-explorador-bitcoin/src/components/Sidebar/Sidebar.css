@@ -41,6 +41,7 @@
 .sidebar .balance {
   padding-bottom: 6px;
   margin-left: 5px;
+  margin-top:0;
 }
 
 .sidebar .tools ul {
@@ -88,4 +89,8 @@
 .sidebar .info-content .sub {
   font-size: 11px;
   margin-top: 3px;
+}
+
+.sidebar .info-content .bx{
+  font-size:32px;
 }

@@ -8,7 +8,9 @@ import { formatDecimals } from "../../utils/formatDecimals";
 const Sidebar = () => {
   const WALLET_DEFAULT = "bcrt1qxa9uhfyw885z7ce7z3hxj9fn62cq45e73fkj7q";
   const [wallet, setWallet] = useState<string>(WALLET_DEFAULT);
-  const [balance, setBalance] = useState<number|null>(null);
+  const [balance, setBalance] = useState<number | null>(null);
+  const [seeBalance, setSeeBalance] = useState<boolean>(false);
+  const [warningBalance, setWarningBalance] = useState<string>("");
 
   useEffect(() => {
     const fetchBalance = async () => {
@@ -16,12 +18,14 @@ const Sidebar = () => {
         try {
           const response = await api.get(`/balance/${wallet}`);
           setBalance(response.data.balance);
+          setSeeBalance(true);
         } catch (error) {
-          console.error("Erro ao buscar saldo:", error);
+          setWarningBalance("Erro ao buscar saldo");
           setBalance(null);
         }
       } else {
         setBalance(null);
+        setWarningBalance("Erro ao buscar saldo");
       }
     };
 
@@ -34,6 +38,10 @@ const Sidebar = () => {
     },
     []
   );
+
+  const handleBalance = () => {
+    setSeeBalance(!seeBalance);
+  };
 
   return (
     <div className="sidebar">
@@ -52,11 +60,24 @@ const Sidebar = () => {
               />
             </div>
 
-            <div className="info-content">
+            <div className="info-content" onClick={handleBalance}>
               <span className="icon">💰</span> Saldo(
-              <span className="sub">BTC</span>):
-              <h3 className="balance">{formatDecimals(balance, 2)}</h3>
+              <span className="sub">BTC</span>)
+              <i
+                className={
+                  seeBalance ? "bx bx-chevron-up" : "bx bx-chevron-down"
+                }
+              ></i>
             </div>
+            {seeBalance ? (
+              balance ? (
+                <h3 className="balance">{formatDecimals(balance)}</h3>
+              ) : (
+                warningBalance
+              )
+            ) : (
+              ""
+            )}
           </li>
         </ul>
       </div>
