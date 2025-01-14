@@ -3,7 +3,7 @@ import { getLatestBlocks, getBlockByHeight } from '../controllers/blockControlle
 
 const router = Router();
 
-router.get('/blocks/latest', getLatestBlocks);
-router.get('/block/:height', getBlockByHeight);
+router.get('/blocks', getLatestBlocks);
+router.get('/blocks/:height', getBlockByHeight);
 
 export default router;
