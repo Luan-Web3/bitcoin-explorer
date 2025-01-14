@@ -4,7 +4,7 @@
 > Interface inicial 
 
 
-![alt text](../frontend-explorador-bitcoin/src/assets/btc-explorer.png)
+![alt text](../frontend/src/assets/btc-explorer.png)
 
 
 
@@ -30,7 +30,7 @@ git clone https://github.com/dev-araujo/dojo-bitcoin.git
 Em um novo terminal, navegue até a pasta do frontend e instale as dependências:
 
 ```
-cd frontend-explorador-bitcoin
+cd frontend
 npm install
 ```
 
@@ -50,7 +50,7 @@ Em um novo terminal, navegue até a pasta do frontend e instale as dependências
 
 #### Passo 1
 ```
-cd frontend-explorador-bitcoin
+cd frontend
 npm install
 ```
 
