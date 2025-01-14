@@ -54,5 +54,13 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
         </sub>
       </a>
     </td>
+      <td align="center">
+      <a href="https://github.com/costaadiego1989" title="Diego Costa">
+        <img src="https://avatars.githubusercontent.com/u/92276509?v=4" width="100px;" alt="Foto do Diego Costa"/><br>
+        <sub>
+          <b>Adriano P. Araujo</b>
+        </sub>
+      </a>
+    </td>
   </tr>
 </table>
