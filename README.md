@@ -1,31 +1,31 @@
 # Explorer BTC
 ### Grupo - Cruzados do Código ⚔️🎲👩‍💻
 
-> Projeto em andamento 
 
 
 **Primeiro projeto** do estudo de 5 semanas da [NearX](https://nearx.com.br/pt/home) sobre desenvolvimento na rede Bitcoin e Lightning Network ! 😲 🚀
 
 # 🤺 Sobre o projeto
 
-É um Explorer que conecta-se ao nó Bitcoin é tem as seguintes funcionalidades: 
+Esse projeto é um **Explorador de Blocos** que conecta-se ao nó Bitcoin é tem as seguintes funcionalidades: 
+
   -  Busca um bloco pelo número.
   -  Buscar uma transação pelo hash.
   -  Exibir o saldo de uma carteira com base no endereço.
 
 
-![](https://github.com/dev-araujo/dojo-bitcoin/blob/main/frontend-explorador-bitcoin/src/assets/block.png?raw=true)
+![Logo do explorador Bitcoin](./frontend-explorador-bitcoin/src/assets/btc-explorer.png)
 
 
 ## Instruções para executar localmente
 
-- [Frontend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/frontend-explorador-bitcoin/README.md) (Em construção)
-- [Backend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/server/README.md) (Em construção)
+- [Frontend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/frontend-explorador-bitcoin/README.md)
+- [Backend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/server/README.md) 
 
 
 ## 🤝 Colaboradores
 
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+Às seguintes pessoas que contribuíram para este projeto:
 
 <table>
   <tr>
