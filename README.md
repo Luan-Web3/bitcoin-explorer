@@ -1,4 +1,4 @@
-# Dojo Bitcoin 
+# Explorer BTC
 ### Grupo - Cruzados do Código ⚔️🎲👩‍💻
 
 > Projeto em andamento 
@@ -49,6 +49,14 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     <td align="center">
       <a href="https://github.com/dev-araujo" title="Adriano P. Araujo">
         <img src="https://avatars.githubusercontent.com/u/97068163?v=4" width="100px;" alt="Foto do Adriano P. Araujo"/><br>
+        <sub>
+          <b>Adriano P. Araujo</b>
+        </sub>
+      </a>
+    </td>
+      <td align="center">
+      <a href="https://github.com/costaadiego1989" title="Diego Costa">
+        <img src="https://avatars.githubusercontent.com/u/92276509?v=4" width="100px;" alt="Foto do Diego Costa"/><br>
         <sub>
           <b>Adriano P. Araujo</b>
         </sub>
