@@ -55,7 +55,7 @@ const Sidebar = () => {
             <div className="info-content">
               <span className="icon">💰</span> Saldo(
               <span className="sub">BTC</span>):
-              <h3 className="balance">{formatDecimals(balance, 4)}</h3>
+              <h3 className="balance">{formatDecimals(balance, 2)}</h3>
             </div>
           </li>
         </ul>
