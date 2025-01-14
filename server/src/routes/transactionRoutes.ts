@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getLatestTransactions, getTransactionByTxid, getMempool } from '../controllers/transactionController';
+import { getLatestTransactions, getTransactionByTxid } from '../controllers/transactionController';
 
 const router = Router();
 
