@@ -1,10 +1,8 @@
 :root {
   --primary-color: #231a10;
   --secondary-color: #493622;
-  --tertiary-color:#684d31;
+  --tertiary-color: #684d31;
   --padding-default: 0.25rem;
-
-  
 }
 
 body {
@@ -13,7 +11,7 @@ body {
   background-color: var(--primary-color);
   color: #fff;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  letter-spacing: 0.5px;;
+  letter-spacing: 0.5px;
   height: 100%;
   overflow-y: hidden;
 }
@@ -28,10 +26,11 @@ code {
   color: white;
 }
 
-input::selection {
+input::selection, td::selection {
   background: white;
   color: var(--secondary-color);
 }
+
 
 input {
   padding: 8px;
@@ -41,8 +40,8 @@ input {
   color: white;
 }
 
-input::placeholder{
-  color:rgba(231, 231, 231, 0.884);
+input::placeholder {
+  color: rgba(231, 231, 231, 0.884);
   font-style: italic;
 }
 
@@ -62,18 +61,19 @@ input:focus {
   background: var(--secondary-color);
 }
 
-h1,h2,h3{
-     font-family: "EB Garamond", serif;
-
+h1,
+h2,
+h3 {
+  font-family: "EB Garamond", serif;
 }
 
-h1{
-   font-size:38px;
+h1 {
+  font-size: 38px;
 }
 
-h2{
-   font-size:32px;
+h2 {
+  font-size: 32px;
 }
-h3{
-  font-size:26px;
+h3 {
+  font-size: 26px;
 }

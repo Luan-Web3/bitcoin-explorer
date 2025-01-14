@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import bitcoinClient from '../services/bitcoinService';
+import { BlockDTO } from '../dtos/block.dto';
 
 export const getLatestBlocks = async (req: Request, res: Response) => {
     try {
@@ -18,7 +19,14 @@ export const getLatestBlocks = async (req: Request, res: Response) => {
         );
         const blocks = await Promise.all(blockDetailsPromises);
 
-        res.json(blocks);
+        const blocksResponse: BlockDTO[] = blocks.map((block) => ({
+            hash: block.hash,
+            height: block.height,
+            confirmations: block.confirmations,
+            time: block.time,
+        }));
+
+        res.json(blocksResponse);
     } catch (error) {
         console.error('Erro ao buscar os últimos blocos:', error.message);
         res.status(500).json({ error: 'Erro ao buscar os últimos blocos' });
@@ -30,8 +38,16 @@ export const getBlockByHeight = async (req: Request, res: Response) => {
         const { height } = req.params;
         const hash = await bitcoinClient.command('getblockhash', parseInt(height));
         const block = await bitcoinClient.command('getblock', hash);
-        res.json(block);
+
+        const blockResponse: BlockDTO = {
+            hash: block.hash,
+            height: block.height,
+            confirmations: block.confirmations,
+            time: block.time,
+        };
+
+        res.json(blockResponse);
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
-}
+};
