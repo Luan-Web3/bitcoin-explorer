@@ -1,6 +1,6 @@
 import "./TransactionsTable.css";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import api from "../../api";
 import { formatDecimals } from "../../utils/formatDecimals";
@@ -8,17 +8,7 @@ import { formatTimestamp } from "../../utils/formatTimestamp";
 
 interface Transaction {
   txid: string;
-  hash: string;
-  version: number;
-  size: number;
-  vsize: number;
-  weight: number;
-  locktime: number;
-  vin: {
-    coinbase?: string;
-    txinwitness?: string[];
-    sequence: number;
-  }[];
+  blocktime: number;
   vout: {
     value: number;
     n: number;
@@ -30,29 +20,24 @@ interface Transaction {
       type: string;
     };
   }[];
-  hex: string;
-  blockhash: string;
   confirmations: number;
   time: number;
-  blocktime: number;
 }
 
 const TransactionsTable = () => {
-  const HASH =
-    "4a159f6434ec173ed8d39a8166c7fd4f65c362c43f724fe9cac9467029b929a2";
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [search, setSearch] = useState<string>(HASH);
+  const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchTransactions(HASH);
+    fetchLatestTransactions();
   }, []);
 
-  const fetchTransactions = async (txid: string) => {
+  const fetchLatestTransactions = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/transaction/${txid}`);
-      setTransactions([response.data]);
+      const response = await api.get(`/transactions/latest`);
+      setTransactions(response.data);
     } catch (error) {
       console.error("Erro ao buscar transações:", error);
       setTransactions([]);
@@ -61,33 +46,54 @@ const TransactionsTable = () => {
     }
   };
 
-  const handleSearchChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const searchText = event.target.value;
-      setSearch(searchText);
+  const fetchTransactionByTxid = async (txid: string) => {
+    try {
+      setLoading(true);
+      const response = await api.get(`/transaction/${txid}`);
+      setTransactions([response.data]);
+    } catch (error) {
+      console.error("Erro ao buscar transação:", error);
+      setTransactions([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-      const delayDebounceFn = setTimeout(() => {
-        fetchTransactions(searchText);
-      }, 300);
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchText = event.target.value;
+    setSearch(searchText);
 
-      return () => clearTimeout(delayDebounceFn);
-    },
-    []
-  );
+    if (searchText === "") {
+      fetchLatestTransactions();
+    }
+  };
+
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (search) {
+      fetchTransactionByTxid(search);
+    } else {
+      fetchLatestTransactions();
+    }
+  };
 
   return (
     <div className="transactions-table">
       <header>
         <h2>Últimas Transações</h2>
-        <div>
+        <form onSubmit={handleSearch}>
           <input
             disabled={loading}
             placeholder="Pesquise a transação pelo txid aqui"
             value={search}
             onChange={handleSearchChange}
           />
-        </div>
+          <button type="submit" hidden>
+            Pesquisar
+          </button>
+        </form>
       </header>
+      {loading && <div className="loading">Carregando...</div>}
       <div className="table-container">
         {transactions.length > 0 ? (
           <table>
@@ -101,7 +107,7 @@ const TransactionsTable = () => {
               </tr>
             </thead>
             <tbody>
-              {transactions.map((transaction) => (
+              {/* {transactions.map((transaction) => (
                 <tr key={transaction.txid}>
                   <td>{transaction.txid}</td>
                   <td className="optional">
@@ -109,7 +115,7 @@ const TransactionsTable = () => {
                   </td>
                   <td>
                     {formatDecimals(
-                      transaction.vout.reduce(
+                      transaction?.vout.reduce(
                         (total, output) => total + output.value,
                         0
                       )
@@ -120,7 +126,7 @@ const TransactionsTable = () => {
                   </td>
                   <td>{transaction.confirmations}</td>
                 </tr>
-              ))}
+              ))} */}
             </tbody>
           </table>
         ) : (
