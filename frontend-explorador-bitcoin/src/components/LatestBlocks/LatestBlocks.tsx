@@ -1,6 +1,6 @@
 import "./LatestBlocks.css";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import api from "../../api";
 import { copyToClipboard } from "../../utils/copyToClipboard";
@@ -29,7 +29,6 @@ interface Block {
 }
 
 const LatestBlocks = () => {
-  const NUMBER_ONE = 1;
   const [blocks, setBlocks] = useState<Block[]>([]);
   const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -44,46 +43,43 @@ const LatestBlocks = () => {
       setLoading(true);
       const response = await api.get(`/blocks/latest`);
       setBlocks(response.data);
-      console.log(blocks)
     } catch (error) {
       console.error("Erro ao buscar blocos:", error);
+      setBlocks([]);
     } finally {
       setLoading(false);
     }
   };
 
-  const fetchBlocks = async (blockNumber: number) => {
+  const fetchBlockByNumber = async (blockNumber: number) => {
     try {
       setLoading(true);
       const response = await api.get(`/block/${blockNumber}`);
       setBlocks([response.data]);
     } catch (error) {
-      console.error("Erro ao buscar blocos:", error);
+      console.error("Erro ao buscar bloco:", error);
+      setBlocks([]);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleSearchChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const searchText = event.target.value;
-      setSearch(searchText);
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchText = event.target.value;
+    setSearch(searchText);
 
-      const delayDebounceFn = setTimeout(() => {
-        if (searchText) {
-          fetchBlocks(parseInt(searchText));
-        } else {
-          fetchBlocks(NUMBER_ONE);
-        }
-      }, 300);
+    if (searchText === "") {
+      fetchLatestBlocks();
+    }
+  };
 
-      return () => clearTimeout(delayDebounceFn);
-    },
-    []
-  );
-
-  const handleSearch = () => {
-    fetchBlocks(parseInt(search));
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (search) {
+      fetchBlockByNumber(parseInt(search));
+    } else {
+      fetchLatestBlocks();
+    }
   };
 
   return (
@@ -93,14 +89,20 @@ const LatestBlocks = () => {
         <form onSubmit={handleSearch}>
           <input
             disabled={loading}
-            placeholder=" Pesquise o Bloco aqui"
+            placeholder="Pesquise o Bloco aqui e clique enter"
             value={search}
             onChange={handleSearchChange}
           />
+          <button type="submit" hidden>
+            Pesquisar
+          </button>
         </form>
       </header>
 
       <div className="box-blocks">
+        {blocks.length === 0 && !loading && (
+          <div className="no-results">Bloco não encontrado.</div>
+        )}
         {blocks.map((block) => (
           <div className="block" key={block.hash}>
             <div className="block-icon">
