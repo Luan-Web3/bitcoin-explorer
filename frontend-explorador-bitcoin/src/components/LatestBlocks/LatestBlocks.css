@@ -14,10 +14,11 @@
 }
 
 .box-blocks {
-  min-height: 304px;
-  height: 304px;
+  min-height: 309px;
+  height: 309px;
   overflow-y: auto;
   padding-right: 1rem;
+  margin-top:1rem;
 }
 .block {
   display: flex;
