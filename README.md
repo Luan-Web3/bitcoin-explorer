@@ -58,7 +58,7 @@ Esse projeto é um **Explorador de Blocos** que conecta-se ao nó Bitcoin é tem
       <a href="https://github.com/costaadiego1989" title="Diego Costa">
         <img src="https://avatars.githubusercontent.com/u/92276509?v=4" width="100px;" alt="Foto do Diego Costa"/><br>
         <sub>
-          <b>Adriano P. Araujo</b>
+          <b>Diego Costa</b>
         </sub>
       </a>
     </td>
