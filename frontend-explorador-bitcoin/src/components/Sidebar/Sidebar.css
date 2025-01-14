@@ -30,6 +30,7 @@
 .sidebar .tools {
   padding-left: 1rem;
   padding-right: 1rem;
+  width:280px;
 }
 
 .sidebar .tools ul h2 {
