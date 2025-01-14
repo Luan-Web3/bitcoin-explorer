@@ -1,4 +1,4 @@
-# Dojo Bitcoin 
+# Explorer BTC
 ### Grupo - Cruzados do Código ⚔️🎲👩‍💻
 
 > Projeto em andamento 
