@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import bitcoinClient from '../services/bitcoinService';
+
 import { TransactionDTO } from '../dtos/transaction.dto';
+import bitcoinClient from '../services/bitcoinService';
 
 export const getLatestTransactions = async (req: Request, res: Response) => {
     try {
@@ -20,7 +21,7 @@ export const getLatestTransactions = async (req: Request, res: Response) => {
         }));
 
         res.json(transactionsResponse);
-    } catch (error) {
+    } catch (error:any) {
         console.error('Erro ao buscar transações:', error.message);
         res.status(500).json({ error: 'Erro ao buscar transações' });
     }
@@ -40,7 +41,7 @@ export const getTransactionByTxid = async (req: Request, res: Response) => {
         };
 
         res.json(transactionResponse);
-    } catch (err) {
+    } catch (err:any) {
         res.status(500).json({ error: err.message });
     }
 };
