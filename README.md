@@ -16,11 +16,24 @@ Esse projeto é um **Explorador de Blocos** que conecta-se ao nó Bitcoin é tem
 
 ![Logo do explorador Bitcoin](./frontend/src/assets/btc-explorer.png)
 
+## Pré-requisito
+- [Docker](https://docs.docker.com/engine/install/)
 
-## Instruções para executar localmente
 
-- [Frontend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/frontend/README.md)
-- [Backend](https://github.com/dev-araujo/dojo-bitcoin/blob/main/server/README.md) 
+## Instruções para executar via Docker
+
+```
+git clone https://github.com/dev-araujo/explorer-btc.git
+```
+```
+cd explorer-btc
+```
+- Na pasta server duplica o arquivo **.env.template** e renomeia para **.env**
+```
+docker compose up
+```
+
+A aplicação estará disponível em http://localhost:5173
 
 
 ## 🤝 Colaboradores
