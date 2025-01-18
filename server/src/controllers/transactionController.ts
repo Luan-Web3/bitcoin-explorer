@@ -21,7 +21,7 @@ export const getLatestTransactions = async (req: Request, res: Response) => {
         }));
 
         res.json(transactionsResponse);
-    } catch (error:any) {
+    } catch (error: any) {
         console.error('Erro ao buscar transações:', error.message);
         res.status(500).json({ error: 'Erro ao buscar transações' });
     }
@@ -41,7 +41,7 @@ export const getTransactionByTxid = async (req: Request, res: Response) => {
         };
 
         res.json(transactionResponse);
-    } catch (err:any) {
+    } catch (err: any) {
         res.status(500).json({ error: err.message });
     }
 };

@@ -7,6 +7,7 @@ const bitcoinClient = new Client({
     password: process.env.RPC_PASSWORD || '',
     host: process.env.RPC_HOST || '129.148.59.60',
     port: parseInt(process.env.RPC_PORT || '18443', 10),
+    wallet: process.env.RPC_WALLET || ''
 });
 
 export default bitcoinClient;
