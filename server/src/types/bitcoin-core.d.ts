@@ -5,6 +5,7 @@ declare module 'bitcoin-core' {
         password: string;
         host: string;
         port: number;
+        wallet: string;
     }
 
     export default class Client {
