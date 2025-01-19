@@ -1,71 +1,66 @@
-# Explorador de blocos UI
+# Block Explorer UI
 
-
-> Interface inicial 
-
+> Initial Interface
 
 ![alt text](../frontend/src/assets/btc-explorer.png)
 
-
-
-## Feito com 🔨
+## Built With 🔨
 - **React (vite)** 
 - **TS** 
 - **Boxicons**
 
-## Instruções para rodar local
+## Instructions to Run Locally
 
-### Pré-requisitos:
+### Prerequisites:
 
-É necessário ter **Node.js** instalados para rodar o projeto localmente. 
+You need to have **Node.js** installed to run the project locally. 
 
-#### Passo 1
-No terminal, clone o projeto:
+#### Step 1
+In the terminal, clone the project:
 ```
 git clone https://github.com/dev-araujo/dojo-bitcoin.git
 ```
 
-#### Passo 2
+#### Step 2
 
-Em um novo terminal, navegue até a pasta do frontend e instale as dependências:
+In a new terminal, navigate to the `frontend` folder and install the dependencies:
 
 ```
 cd frontend
 npm install
 ```
 
-#### Passo 3
-Inicie a aplicação React:
+#### Step 3
+Start the React application:
 
 ```
 npm run dev
 ```
 
-A aplicação estará disponível em **`http://localhost:5173`**. 🎉✨🥳
+The application will be available at **`http://localhost:5173`**. 🎉✨🥳
 
+## Instructions to Run with Docker
 
-## Instruções para rodar com Docker 
+In a new terminal, navigate to the `frontend` folder and install the dependencies:
 
-Em um novo terminal, navegue até a pasta do frontend e instale as dependências:
-
-#### Passo 1
+#### Step 1
 ```
 cd frontend
 npm install
 ```
 
-#### Passo 2
-Crie uma imagem com o seguinte comando:
+#### Step 2
+Create an image using the following command:
 
 ```
 docker build -t dojo-bitcoin-app .
 ```
 
-#### Passo 3
-Inicie o contêiner:
+#### Step 3
+Start the container:
 
 ```
 docker run -d -p 8080:80 --name dojo-bitcoin-container dojo-bitcoin-app
 ```
 
-A aplicação estará disponível em **`http://localhost:8080`**. 🎉✨🥳
+The application will be available at **`http://localhost:8080`**. 🎉✨🥳
